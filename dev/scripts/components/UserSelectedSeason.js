@@ -1,6 +1,14 @@
 import React from 'react';
 
+const UserSelectedSeason = (props) => {
+    return (
+        <div>
+            <li>
+                
+            </li>
+        </div>
+    )
+};
 
 
-
-export default UserSelected;
+export default UserSelectedSeason;
