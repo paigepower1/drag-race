@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import SongInfo from './SongInfo';
 // import config from 'config.js';
 
 class LandingPage extends React.Component {
@@ -14,10 +15,12 @@ class LandingPage extends React.Component {
             
         };
     this.handleClick = this.handleClick.bind(this);
+    this.getInfoForEachSeason = this.getInfoForEachSeason.bind(this);
     }
     // here is our first API request
     // next we need to on click of an item, get the value and put it in the link
     // this will make it season specific
+    
 
     handleClick(e) {
         e.preventDefault(e)
@@ -27,12 +30,23 @@ class LandingPage extends React.Component {
         axios.get(`http://www.nokeynoshade.party/api/seasons/${getSeason}/lipsyncs`, {
         })
             .then(({ data }) => {
-                console.log(data);
+              console.log(data);
                 this.setState({
-                    songsFilteredBySeason: data.results
+                  name: data.name,  
+                  songsFilteredBySeason: data.results
                 });
             });
+    
+  }
+
+    getInfoForEachSeason(){
     }
+
+    songsFilteredBySeason(){
+
+
+    }
+    
 
     
     render() {
@@ -49,8 +63,13 @@ class LandingPage extends React.Component {
                     <li value="8" onClick={this.handleClick}>Season 8</li>
                     <li value="9" onClick={this.handleClick}>Season 9</li>
                 </ul>
-    
             </div>
+            {this.state.songsFilteredBySeason.map((song, i) => {
+              <SongInfo /
+                song={song}
+                key={`song-`}
+              >
+            })}
         )
     }  
 }
