@@ -28,7 +28,7 @@ class LandingPage extends React.Component {
             });
         });
     }
-
+    
     getSongArtistAPI(e1, e2) {
         console.log(e1, e2);
         // const song = e1;
