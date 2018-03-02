@@ -62,7 +62,7 @@ class LandingPage extends React.Component {
     render() {
         return (
             <div className="wrapper clearfix">
-                <h1>Lip Sync For Your Liiiiiiiiiiiiiiiiife</h1>
+                <h1 className="flicker-1">Lip Sync <br/> <span className="headerSpan">For Your Life</span></h1>
                     <ul className="clearfix">
                         <li className="seasonTile" value="1" onClick={this.handleClick}>Season 1</li>
                         <li className="seasonTile" value="2" onClick={this.handleClick}>Season 2</li>
