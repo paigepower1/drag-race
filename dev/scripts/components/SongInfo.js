@@ -2,7 +2,7 @@ import React from 'react';
 
 const SongInfo = (props) => {
         return (
-            // <div>
+            <div>
                 <ul className="clearfix songlist">
                     <li 
                         // onClick={props.songArtist(props.song.name)}
@@ -17,7 +17,8 @@ const SongInfo = (props) => {
                         )
                     })}
                 </ul>
-            // </div>
+                <button onClick={() => props.getSongArtistAPI(props.song.name, props.song.artist)}>Slay</button>
+            </div>
         );
 }
 
