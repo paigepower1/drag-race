@@ -10,6 +10,12 @@ body {
     max-width: 1300px;
 }
 
+button {
+    border: 3px solid mediumvioletred;
+    display: inline-block;
+    // margin: 0 auto;
+}
+
 ul {
     list-style: none;
 }

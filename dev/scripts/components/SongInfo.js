@@ -5,7 +5,6 @@ const SongInfo = (props) => {
             <div>
                 <ul className="clearfix songlist">
                     <li 
-                        // onClick={props.songArtist(props.song.name)}
                         className="songName">{props.song.name}
                     </li>
                     <li className="songArtist">{props.song.artist}</li>

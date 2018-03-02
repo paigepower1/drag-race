@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import SongInfo from './SongInfo';
+import qs from 'qs';
 
 class LandingPage extends React.Component {
 
@@ -8,6 +9,7 @@ class LandingPage extends React.Component {
         super();
         this.state = {
             songsFilteredBySeason: [],
+            lyrics: "",
 
         }
         this.handleClick = this.handleClick.bind(this);
@@ -16,24 +18,45 @@ class LandingPage extends React.Component {
 
     handleClick(e) {
         const selectedSeason = e.target.value;
-        console.log(selectedSeason);
         axios.get(`http://www.nokeynoshade.party/api/seasons/${selectedSeason}/lipsyncs`, {
-
         })
         .then(({ data }) => {
             console.log(data);
             
             this.setState({
-                songsFilteredBySeason: data
+                songsFilteredBySeason: data,
             });
         });
     }
     
     getSongArtistAPI(e1, e2) {
-        console.log(e1, e2);
-        // const song = e1;
-        // console.log(e1);
-        // const ArtistName = this.state.songsFilteredBySeason.name
+        const songName = e1
+        const songArtist = e2
+        console.log(songName, songArtist);
+
+        axios({
+            url: 'https://proxy.hackeryou.com',
+            params: {
+                reqUrl:`http://api.musixmatch.com/ws/1.1/matcher.lyrics.get`, 
+                params: {
+                    apikey: "453d7516366d76a60f74e279e14bf28a",
+                    format: "json",
+                    f_has_lyrics: true,
+                    q_track: `${e1}`,
+                    q_artist: `${e2}`,
+                }
+            },
+            paramsSerializer: function (params) {
+                return qs.stringify(params, { arrayFormat: 'brackets' })
+            },
+        })
+        .then((data) => {
+            const lyricsData = data.data.message.body.lyrics.lyrics_body
+            console.log(data.data.message.body.lyrics.lyrics_body);
+            this.setState({
+                lyrics: lyricsData,
+            });
+        });
     }
 
     render() {
@@ -62,6 +85,8 @@ class LandingPage extends React.Component {
                             />
                         )
                     })}
+                    <p>{this.state.lyrics}</p>
+                    
                 </div>
             </div>
         )
