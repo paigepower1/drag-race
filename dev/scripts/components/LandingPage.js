@@ -30,32 +30,35 @@ class LandingPage extends React.Component {
     }
 
     getSongArtistAPI(e) {
-        console.log(e);
+        
         // const ArtistName = this.state.songsFilteredBySeason.name
     }
 
     render() {
         return (
-            <div>
-                <ul>
-                    <li value="1" onClick={this.handleClick}>Season 1</li>
-                    <li value="2" onClick={this.handleClick}>Season 2</li>
-                    <li value="3" onClick={this.handleClick}>Season 3</li>
-                    <li value="4" onClick={this.handleClick}>Season 4</li>
-                    <li value="5" onClick={this.handleClick}>Season 5</li>
-                    <li value="6" onClick={this.handleClick}>Season 6</li>
-                    <li value="7" onClick={this.handleClick}>Season 7</li>
-                    <li value="8" onClick={this.handleClick}>Season 8</li>
-                    <li value="9" onClick={this.handleClick}>Season 9</li>
+            <div className="wrapper clearfix">
+            <h1>Lip Sync For Your Liiiiiiiiiiiiiiiiife</h1>
+                <ul className="clearfix">
+                    <li className="seasonTile" value="1" onClick={this.handleClick}>Season 1</li>
+                    <li className="seasonTile" value="2" onClick={this.handleClick}>
+                    Season 2</li>
+                    <li className="seasonTile" value="3" onClick={this.handleClick}>Season 3</li>
+                    <li className="seasonTile" value="4" onClick={this.handleClick}>Season 4</li>
+                    <li className="seasonTile" value="5" onClick={this.handleClick}>Season 5</li>
+                    <li className="seasonTile" value="6" onClick={this.handleClick}>Season 6</li>
+                    <li className="seasonTile" value="7" onClick={this.handleClick}>Season 7</li>
+                    <li className="seasonTile" value="8" onClick={this.handleClick}>Season 8</li>
+                    <li className="seasonTile" value="9" onClick={this.handleClick}>Season 9</li>
                 </ul>
-                <div>
+            <div>
                     {this.state.songsFilteredBySeason.map((song, i) => {
                         return (
                             <SongInfo 
-                                onClick={this.getSongArtistAPI}
+                                // songArtist={this.getSongArtistAPI}
                                 song={song}
                                 key={`song-${i}`}
-                                songIndex={i}  
+                                songIndex={i}
+                                onClick={this.getSongArtistAPI()}  
                             />
                         )
                     })}

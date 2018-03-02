@@ -1,0 +1,75 @@
+@import "normalize.scss";
+@import "variables.scss";
+
+body {
+    background: #000000;
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 1300px;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    color: $fontColour;
+}
+
+h1 {
+    font-family: 'Lobster', cursive;
+    color: $fontColour;
+    text-align: center;
+    font-size: 36px;
+    letter-spacing: 2px;
+}
+
+p {
+    font-family: Helvetica, sans-serif;
+    color: $fontColour;
+}
+
+.seasonTile {
+    border-radius: 3px;
+    border: 5px solid mediumvioletred;
+    border-style: ridge;
+    color: $fontColour;
+    font-family: 'Lobster', cursive;
+    font-size: 34px;
+    font-weight: bold;
+    text-align: center;
+    padding: 4% 2%;
+    margin: 10px;
+    float: left;
+}
+
+.pickSeason {
+    font-size: 25px;
+    font-weight: normal;
+    padding: 1% 3%;
+}
+
+.songlist {
+    text-align: center;
+    margin: 0 auto;
+    margin: 10px;
+}
+
+.songName {
+    font-weight: bold;
+    font-family: 'Lobster', cursive;
+    font-size: 20px;
+    color: mediumvioletred;
+}
+
+.songArtist {
+    font-weight: bold;
+}
+
+.songQueen {
+}
+
+
+
