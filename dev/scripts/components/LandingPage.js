@@ -30,8 +30,8 @@ class LandingPage extends React.Component {
     }
 
     getSongArtistAPI(e) {
-        
-        // const ArtistName = this.state.songsFilteredBySeason.name
+        console.log();
+
     }
 
     render() {
@@ -54,11 +54,10 @@ class LandingPage extends React.Component {
                     {this.state.songsFilteredBySeason.map((song, i) => {
                         return (
                             <SongInfo 
-                                // songArtist={this.getSongArtistAPI}
                                 song={song}
                                 key={`song-${i}`}
                                 songIndex={i}
-                                onClick={this.getSongArtistAPI()}  
+                                songArtist={this.getSongArtistAPI}
                             />
                         )
                     })}

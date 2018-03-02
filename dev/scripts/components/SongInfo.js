@@ -2,10 +2,9 @@ import React from 'react';
 
 const SongInfo = (props) => {
         return (
-            // <div>
+            <div>
                 <ul className="clearfix songlist">
                     <li 
-                        // onClick={props.songArtist(props.song.name)}
                         className="songName">{props.song.name}
                     </li>
                     <li className="songArtist">{props.song.artist}</li>
@@ -17,7 +16,8 @@ const SongInfo = (props) => {
                         )
                     })}
                 </ul>
-            // </div>
+            <button onClick={() => props.songArtist(props.song.key)}>Slay</button>
+            </div>
         );
 }
 
