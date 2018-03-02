@@ -4,7 +4,7 @@ import LandingPage from './components/LandingPage';
 
 
 class App extends React.Component {
-   
+
   constructor() {
     super();
     this.state = {

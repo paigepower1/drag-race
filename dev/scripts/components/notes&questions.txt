@@ -1,0 +1,7 @@
+QUESTIONS
+
+- wrap li in a tags for semanticness?
+
+
+
+(`${config.noShadeAPIURL}/${e.getSeason}/lipsyncs`
