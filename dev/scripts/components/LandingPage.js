@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import UserSelectedSeason from './UserSelectedSeason';
 import SongInfo from './SongInfo';
 
 class LandingPage extends React.Component {
@@ -12,11 +11,10 @@ class LandingPage extends React.Component {
 
         }
         this.handleClick = this.handleClick.bind(this);
+        this.getSongArtistAPI = this.getSongArtistAPI.bind(this);
     }
 
     handleClick(e) {
-        // const newSelection = this.state.songsFilteredBySeason;
-        // newSelection = value;
         const selectedSeason = e.target.value;
         console.log(selectedSeason);
         axios.get(`http://www.nokeynoshade.party/api/seasons/${selectedSeason}/lipsyncs`, {
@@ -29,6 +27,11 @@ class LandingPage extends React.Component {
                 songsFilteredBySeason: data
             });
         });
+    }
+
+    getSongArtistAPI(e) {
+        
+        // const ArtistName = this.state.songsFilteredBySeason.name
     }
 
     render() {
@@ -50,13 +53,13 @@ class LandingPage extends React.Component {
             <div>
                     {this.state.songsFilteredBySeason.map((song, i) => {
                         return (
-                            <div>
                             <SongInfo 
+                                // songArtist={this.getSongArtistAPI}
                                 song={song}
                                 key={`song-${i}`}
                                 songIndex={i}
+                                onClick={this.getSongArtistAPI()}  
                             />
-                            </div>
                         )
                     })}
                 </div>

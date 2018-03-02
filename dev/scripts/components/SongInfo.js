@@ -4,7 +4,10 @@ const SongInfo = (props) => {
         return (
             // <div>
                 <ul className="clearfix songlist">
-                    <li className="songName">{props.song.name}</li>
+                    <li 
+                        // onClick={props.songArtist(props.song.name)}
+                        className="songName">{props.song.name}
+                    </li>
                     <li className="songArtist">{props.song.artist}</li>
                     {props.song.queens.map((queen, i ) => {
                         return (
