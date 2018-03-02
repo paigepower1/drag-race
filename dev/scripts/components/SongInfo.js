@@ -16,7 +16,7 @@ const SongInfo = (props) => {
                         )
                     })}
                 </ul>
-            <button onClick={() => props.songArtist(props.song.key)}>Slay</button>
+                <button onClick={() => props.getSongArtistAPI(props.song.name, props.song.artist)}>Slay</button>
             </div>
         );
 }
