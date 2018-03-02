@@ -1,54 +1,36 @@
 import React from 'react';
 import axios from 'axios';
+import UserSelectedSeason from './UserSelectedSeason';
 import SongInfo from './SongInfo';
-// import config from 'config.js';
 
 class LandingPage extends React.Component {
+
     constructor() {
         super();
         this.state = {
             songsFilteredBySeason: [],
-            songDetails: {
-              songName:"",
-              songOriginalArtist:"",
-            }
-            
-        };
-    this.handleClick = this.handleClick.bind(this);
-    this.getInfoForEachSeason = this.getInfoForEachSeason.bind(this);
+
+        }
+        this.handleClick = this.handleClick.bind(this);
     }
-    // here is our first API request
-    // next we need to on click of an item, get the value and put it in the link
-    // this will make it season specific
-    
 
     handleClick(e) {
-        e.preventDefault(e)
-        // console.log(e.target.value);
-        const getSeason = e.target.value;
-        console.log(getSeason);
-        axios.get(`http://www.nokeynoshade.party/api/seasons/${getSeason}/lipsyncs`, {
+        // const newSelection = this.state.songsFilteredBySeason;
+        // newSelection = value;
+        const selectedSeason = e.target.value;
+        console.log(selectedSeason);
+        axios.get(`http://www.nokeynoshade.party/api/seasons/${selectedSeason}/lipsyncs`, {
+
         })
-            .then(({ data }) => {
-              console.log(data);
-                this.setState({
-                  name: data.name,  
-                  songsFilteredBySeason: data.results
-                });
+        .then(({ data }) => {
+            console.log(data);
+
+            this.setState({
+                songsFilteredBySeason: data
             });
-    
-  }
-
-    getInfoForEachSeason(){
+        });
     }
 
-    songsFilteredBySeason(){
-
-
-    }
-    
-
-    
     render() {
         return (
             <div>
@@ -63,18 +45,22 @@ class LandingPage extends React.Component {
                     <li value="8" onClick={this.handleClick}>Season 8</li>
                     <li value="9" onClick={this.handleClick}>Season 9</li>
                 </ul>
+                <div>
+                    {this.state.songsFilteredBySeason.map((song, i) => {
+                        return (
+                            <div>
+                            <SongInfo 
+                                song={song}
+                                key={`song-${i}`}
+                                songIndex={i}
+                            />
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
-            {this.state.songsFilteredBySeason.map((song, i) => {
-              <SongInfo /
-                song={song}
-                key={`song-`}
-              >
-            })}
         )
-    }  
+    }
 }
-
-
-
 
 export default LandingPage;
