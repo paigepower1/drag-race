@@ -37,6 +37,7 @@ h1 {
 .headerSpan{
     color: lighten(mediumvioletred, 30);
     font-family: helvetica, sans-serif;
+    letter-spacing: 0px;
     
 
 } 
@@ -60,7 +61,7 @@ p {
     padding: 4% 2%;
     margin: 10px;
     float: left;
-    text-shadow: lighten(mediumvioletred,30) 3px -6px 10px;
+    text-shadow: lighten(mediumvioletred,30) 3px -6px 20px;
     // text-shadow: #ffffff 3px -6px 10px;
     
 }

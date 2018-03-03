@@ -16,7 +16,11 @@ const SongInfo = (props) => {
                         )
                     })}
                 </ul>
-                <button onClick={() => props.getSongArtistAPI(props.song.name, props.song.artist)}>Slay</button>
+                <button 
+                    onClick={() => {props.getSongArtistAPI(props.song.name, props.song.artist); props.getSpotifyTrack(props.song.name, props.song.artist)}}
+                    >
+                    Slay
+                </button>
             </div>
         );
 }

@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import SongInfo from './SongInfo';
+import tokens from '../tokens';
 import qs from 'qs';
+
 
 class LandingPage extends React.Component {
 
@@ -10,12 +12,20 @@ class LandingPage extends React.Component {
         this.state = {
             songsFilteredBySeason: [],
             lyrics: "",
+            songTrackPlayer: "",
+            songImage: ""
 
         }
         this.handleClick = this.handleClick.bind(this);
         this.getSongArtistAPI = this.getSongArtistAPI.bind(this);
+        this.getSpotifyTrack = this.getSpotifyTrack.bind(this);
     }
+    componentDidMount() {
+        const url = new URL(location.href);
+        tokens.access_token = url.searchParams.get('access_token');
+        tokens.refresh_token = url.searchParams.get('refresh_token');
 
+    }
     handleClick(e) {
         const selectedSeason = e.target.value;
         axios.get(`http://www.nokeynoshade.party/api/seasons/${selectedSeason}/lipsyncs`, {
@@ -32,7 +42,7 @@ class LandingPage extends React.Component {
     getSongArtistAPI(e1, e2) {
         const songName = e1
         const songArtist = e2
-        console.log(songName, songArtist);
+        // console.log(songName, songArtist);
 
         axios({
             url: 'https://proxy.hackeryou.com',
@@ -59,9 +69,42 @@ class LandingPage extends React.Component {
         });
     }
 
+    getSpotifyTrack(e1, e2) {
+
+        const songName = e1;
+        const songArtist = e2;
+        console.log(songArtist);
+
+        tokens.getToken()
+            .then(token => {
+                axios({
+                    url: 'https://api.spotify.com/v1/search',
+                    params: {
+                        type: 'track', 
+                        q: `${songName} + ${songArtist}`
+                    },
+                    headers: {
+                        'Authorization' : `Bearer ${token}`
+                    }
+                })
+                .then(res => {
+                    const spotifyTrackPlay = res.data.tracks.items[0].uri;
+                    const spotifyAlbumImage = res.data.tracks.items[0].album.images[0].url;
+                    console.log(spotifyAlbumImage, spotifyTrackPlay);
+                    
+                    const TrackLink = `https://open.spotify.com/embed?uri=${spotifyTrackPlay}`;
+                    this.setState({
+                        songTrackPlayer: TrackLink,
+                        songImage: spotifyAlbumImage
+                    });
+                })
+            })
+    }
+    
     render() {
         return (
             <div className="wrapper clearfix">
+                <a href="https://drag-race.herokuapp.com/auth">Login in with spotify</a>
                 <h1 className="flicker-1">Lip Sync <br/> <span className="headerSpan">For Your Life</span></h1>
                     <ul className="clearfix">
                         <li className="seasonTile" value="1" onClick={this.handleClick}>Season 1</li>
@@ -79,14 +122,19 @@ class LandingPage extends React.Component {
                         return (
                             <SongInfo 
                                 getSongArtistAPI={this.getSongArtistAPI}
+                                getSpotifyTrack={this.getSpotifyTrack}
                                 song={song}
                                 key={`song-${i}`}
                                 songIndex={i} 
                             />
                         )
                     })}
+                </div>
+                <div>
                     <p>{this.state.lyrics}</p>
-                    
+                    <iframe src={this.state.songTrackPlayer}
+                    frameBorder="0" allow="encrypted-media" allowtransparency="true"></iframe>
+                    <img src={this.state.songImage} alt=""/>
                 </div>
             </div>
         )
