@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import SongInfo from './SongInfo';
+import tokens from '../tokens';
+
 
 class LandingPage extends React.Component {
 
@@ -12,8 +14,14 @@ class LandingPage extends React.Component {
         }
         this.handleClick = this.handleClick.bind(this);
         this.getSongArtistAPI = this.getSongArtistAPI.bind(this);
+        // this.getSpotifyTrack = this.getSpotifyTrack.bind(this);
     }
+    componentDidMount() {
+        const url = new URL(location.href);
+        tokens.access_token = url.searchParams.get('access_token');
+        tokens.refresh_token = url.searchParams.get('refresh_token');
 
+    }
     handleClick(e) {
         const selectedSeason = e.target.value;
         console.log(selectedSeason);
@@ -36,9 +44,31 @@ class LandingPage extends React.Component {
         // const ArtistName = this.state.songsFilteredBySeason.name
     }
 
+    getSpotifyTrack(e) {
+        
+        const songForSpotify = e;
+        tokens.getToken()
+            .then(token => {
+                axios({
+                    url: 'https://api.spotify.com/v1/search',
+                    params: {
+                        type: 'album',
+                        q: 'the black album'
+                    },
+                    headers: {
+                        'Authorization' : `Bearer ${token}`
+                    }
+                })
+                .then(res => {
+                    console.log(res);
+                })
+            })
+    }
+    
     render() {
         return (
             <div className="wrapper clearfix">
+                <a href="https://drag-race.herokuapp.com/auth">Login in with spotify</a>
                 <h1>Lip Sync For Your Liiiiiiiiiiiiiiiiife</h1>
                     <ul className="clearfix">
                         <li className="seasonTile" value="1" onClick={this.handleClick}>Season 1</li>
@@ -56,12 +86,14 @@ class LandingPage extends React.Component {
                         return (
                             <SongInfo 
                                 getSongArtistAPI={this.getSongArtistAPI}
+                                getSpotifyTrack={this.getSpotifyTrack}
                                 song={song}
                                 key={`song-${i}`}
                                 songIndex={i} 
                             />
                         )
                     })}
+                    
                 </div>
             </div>
         )

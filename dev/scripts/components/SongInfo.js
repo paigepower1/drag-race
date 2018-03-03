@@ -5,7 +5,6 @@ const SongInfo = (props) => {
             <div>
                 <ul className="clearfix songlist">
                     <li 
-                        // onClick={props.songArtist(props.song.name)}
                         className="songName">{props.song.name}
                     </li>
                     <li className="songArtist">{props.song.artist}</li>
@@ -17,7 +16,11 @@ const SongInfo = (props) => {
                         )
                     })}
                 </ul>
-                <button onClick={() => props.getSongArtistAPI(props.song.name, props.song.artist)}>Slay</button>
+                <button 
+                    onClick={() => {props.getSongArtistAPI(props.song.name, props.song.artist); props.getSpotifyTrack(props.song.name)}}
+                    >
+                    Slay
+                </button>
             </div>
         );
 }
