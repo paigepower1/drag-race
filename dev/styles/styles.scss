@@ -37,6 +37,7 @@ h1 {
 .headerSpan{
     color: lighten(mediumvioletred, 30);
     font-family: helvetica, sans-serif;
+    letter-spacing: 0px;
     
 
 } 
@@ -60,7 +61,7 @@ p {
     padding: 4% 2%;
     margin: 10px;
     float: left;
-    text-shadow: lighten(mediumvioletred,30) 3px -6px 10px;
+    text-shadow: lighten(mediumvioletred,30) 3px -6px 20px;
     // text-shadow: #ffffff 3px -6px 10px;
     
 }
@@ -89,6 +90,22 @@ p {
 }
 
 .songQueen {
+}
+
+// SpotifyPopUp component styles
+
+#popUp {
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  transition: transform 400ms ease-in;
+}
+#popUp.slideIn {
+  transform: translateX(0);
+}
+
+#popUp.slideOut {
+  transform: translateX(-100%);
 }
 
 .flicker-1 {
