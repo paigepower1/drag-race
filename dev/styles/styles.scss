@@ -66,6 +66,11 @@ p {
     
 }
 
+.seasonTile:hover{
+  background-color: white;
+  // background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,0,132,1)), color-stop(24%, rgba(145,141,198,1)), color-stop(38%, rgba(81,224,237,1)), color-stop(70%, rgba(255,0,132,1)), color-stop(99%, rgba(255,0,132,1)), color-stop(100%, rgba(255,0,132,1)));
+}
+
 .pickSeason {
     font-size: 25px;
     font-weight: normal;
