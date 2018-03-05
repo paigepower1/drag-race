@@ -2,12 +2,16 @@ import React from 'react';
 
 const SongInfo = (props) => {
         return (
-            <div>
+            <div className="songCard">
                 <ul className="clearfix songlist">
-                    <li 
-                        className="songName">{props.song.name}
+                    <li
+                        className="songArtist">{props.song.artist}
                     </li>
-                    <li className="songArtist">{props.song.artist}</li>
+                    <div className="songNameWrapper">
+                        <li 
+                            className="songName">{props.song.name}
+                        </li>
+                    </div>
                     {props.song.queens.map((queen, i ) => {
                         return (
                             <li className="songQueen" key={`-${i}`}>
