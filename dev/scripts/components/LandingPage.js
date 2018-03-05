@@ -128,7 +128,7 @@ class LandingPage extends React.Component {
                         <li className="seasonTile" value="8" onClick={this.handleClick}>Season 8</li>
                         <li className="seasonTile" value="9" onClick={this.handleClick}>Season 9</li>
                     </ul>
-                <div>
+                <div className="songCardWrapper">
                     {this.state.songsFilteredBySeason.map((song, i) => {
                         return (
                             <SongInfo 
@@ -142,7 +142,7 @@ class LandingPage extends React.Component {
                         )
                     })}
                 </div>
-                <div>
+                <div className="spotifyPopUpWrapper">
                     <SpotifyPopUp
                         visible={this.state.visible}
                         lyrics={this.state.lyrics}
