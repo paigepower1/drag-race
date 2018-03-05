@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import SongInfo from './SongInfo';
+import SpotifyPopUp from './SpotifyPopUp'
 import tokens from '../tokens';
 import qs from 'qs';
 
@@ -13,12 +14,14 @@ class LandingPage extends React.Component {
             songsFilteredBySeason: [],
             lyrics: "",
             songTrackPlayer: "",
-            songImage: ""
+            songImage: "",
+            visible: false
 
         }
         this.handleClick = this.handleClick.bind(this);
         this.getSongArtistAPI = this.getSongArtistAPI.bind(this);
         this.getSpotifyTrack = this.getSpotifyTrack.bind(this);
+        this.setVisible = this.setVisible.bind(this);
     }
     componentDidMount() {
         const url = new URL(location.href);
@@ -31,12 +34,14 @@ class LandingPage extends React.Component {
         axios.get(`http://www.nokeynoshade.party/api/seasons/${selectedSeason}/lipsyncs`, {
         })
         .then(({ data }) => {
+            console.log(data);
+            
             this.setState({
                 songsFilteredBySeason: data,
             });
         });
     }
-
+    
     getSongArtistAPI(e1, e2) {
         const songName = e1
         const songArtist = e2
@@ -99,7 +104,12 @@ class LandingPage extends React.Component {
             })
     }
 
-
+    setVisible() {
+        this.setState(prev => ({
+            visible: !prev.visible
+        }));
+    }
+    
     render() {
         return (
             <div className="wrapper clearfix">
@@ -116,12 +126,13 @@ class LandingPage extends React.Component {
                         <li className="seasonTile" value="8" onClick={this.handleClick}>Season 8</li>
                         <li className="seasonTile" value="9" onClick={this.handleClick}>Season 9</li>
                     </ul>
-                <div>
+                <div className="songCardWrapper">
                     {this.state.songsFilteredBySeason.map((song, i) => {
                         return (
                             <SongInfo 
                                 getSongArtistAPI={this.getSongArtistAPI}
                                 getSpotifyTrack={this.getSpotifyTrack}
+                                setVisible={this.setVisible}
                                 song={song}
                                 key={`song-${i}`}
                                 songIndex={i} 
@@ -129,12 +140,20 @@ class LandingPage extends React.Component {
                         )
                     })}
                 </div>
-                <div>
+                <div className="spotifyPopUpWrapper">
+                    <SpotifyPopUp
+                        visible={this.state.visible}
+                        lyrics={this.state.lyrics}
+                        songTrackPlayer={this.state.songTrackPlayer}
+                        songImage={this.state.songImage}
+                    />
+                </div>
+                {/* <div>
                     <p>{this.state.lyrics}</p>
                     <iframe src={this.state.songTrackPlayer}
                     frameBorder="0" allow="encrypted-media" allowtransparency="true"></iframe>
                     <img src={this.state.songImage} alt=""/>
-                </div>
+                </div> */}
             </div>
         )
     }

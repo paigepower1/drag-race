@@ -7,7 +7,6 @@ body {
 
 .wrapper {
     margin: 0 auto;
-    max-width: 1300px;
 }
 
 button {
@@ -37,6 +36,7 @@ h1 {
 .headerSpan{
     color: lighten(mediumvioletred, 30);
     font-family: helvetica, sans-serif;
+    letter-spacing: 0px;
     
 
 } 
@@ -60,35 +60,147 @@ p {
     padding: 4% 2%;
     margin: 10px;
     float: left;
-    text-shadow: lighten(mediumvioletred,30) 3px -6px 10px;
+    text-shadow: lighten(mediumvioletred,30) 3px -6px 20px;
     // text-shadow: #ffffff 3px -6px 10px;
     
 }
 
+
 .pickSeason {
-    font-size: 25px;
-    font-weight: normal;
-    padding: 1% 3%;
+  font-size: 25px;
+  font-weight: normal;
+  padding: 1% 3%;
+}
+
+// the song card begins here
+.songCard {
+  float: left;
+  width: calc(45% - 100px);
+  margin: 10px 40px;
+  border: solid 10px rgb(240, 146, 206);
+  text-align:center;
+  background:white;
+  min-height: 240px;
+  padding-top: 20px;
+}
+
+.songCardWrapper {
+  width: 95%;
+  margin: 0 auto;
 }
 
 .songlist {
     text-align: center;
     margin: 0 auto;
     margin: 10px;
-}
-
-.songName {
-    font-weight: bold;
-    font-family: 'Lobster', cursive;
-    font-size: 20px;
-    color: mediumvioletred;
+    padding: 0;
 }
 
 .songArtist {
     font-weight: bold;
+    font-family: 'Lobster', cursive;
+    font-size: 20px;
+    color: black;
+    text-transform:uppercase;
 }
 
+.songName {
+    font-weight: bold;
+    border:solid 8px mediumvioletred;
+    position:relative;
+    background: white;
+    letter-spacing:1px;
+    font-weight:500;
+    font-size: 25px;
+    line-height:1.8;
+    color: black;
+    text-align: center;
+}
+
+.songName:before {
+  content: "";
+  width: 0;
+	height: 0;
+	border-top: .9em solid transparent;
+	border-left: .9em solid mediumvioletred;
+	border-bottom: .9em solid transparent;
+  position:absolute;
+  left:0;
+  top:0;
+}
+
+.songName:after {
+  content: "";
+  width: 0;
+	height: 0;
+	border-top: .9em solid transparent;
+	border-right: .9em solid mediumvioletred;
+	border-bottom: .9em solid transparent;
+  position:absolute;
+  right:0;
+  top:0;
+}
+
+.songNameWrapper {
+  width: 90%;
+  margin: 0 auto;
+  position:relative;
+  margin: 10px auto;
+}
+
+.songNameWrapper:before .songNameWrapper:after {
+  content: "";
+  height: 60%;
+  background:mediumvioletred;
+  position:absolute;
+  top:20%;
+  width:500px; 
+}
+
+.songNameWrapper:after {
+  right: 100%;
+}
+.songNameWrapper:before {
+  left: 100%;
+}
+
+
+
 .songQueen {
+}
+
+// SpotifyPopUp component styles
+
+.spotifyPopUpWrapper {
+  width: 90%;
+  float: left;
+}
+
+.popUpLeft {
+  float: left;
+}
+
+.popUpLeft img {
+  float: left;
+}
+
+iframe {
+  float: left;
+}
+
+#popUp {
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  transition: transform 400ms ease-in;
+  float: left;
+}
+#popUp.slideIn {
+  transform: translateX(0);
+}
+
+#popUp.slideOut {
+  transform: translateX(-100%);
 }
 
 .flicker-1 {
