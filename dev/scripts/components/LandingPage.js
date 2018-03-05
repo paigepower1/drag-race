@@ -98,7 +98,8 @@ class LandingPage extends React.Component {
                 })
             })
     }
-    
+
+
     render() {
         return (
             <div className="wrapper clearfix">
