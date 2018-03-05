@@ -92,6 +92,22 @@ p {
 .songQueen {
 }
 
+// SpotifyPopUp component styles
+
+#popUp {
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  transition: transform 400ms ease-in;
+}
+#popUp.slideIn {
+  transform: translateX(0);
+}
+
+#popUp.slideOut {
+  transform: translateX(-100%);
+}
+
 .flicker-1 {
 	-webkit-animation: flicker-1 2s linear infinite both;
 	        animation: flicker-1 2s linear infinite both;
