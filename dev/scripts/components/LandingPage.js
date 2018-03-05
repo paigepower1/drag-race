@@ -114,8 +114,10 @@ class LandingPage extends React.Component {
         return (
             <div className="wrapper clearfix">
                 <a href="https://drag-race.herokuapp.com/auth">Login in with spotify</a>
-                <h1 className="flicker-1">Lip Sync <br/> <span className="headerSpan">For Your Life</span></h1>
+                <h1 className="flicker-1">RuPaul's Lip Sync <br/> </h1>
+                {/* <span className="headerSpan">For Your Life</span> */}
                     <ul className="clearfix">
+                        {/* <li className="seasonTile" value="0">Seasons:</li> */}
                         <li className="seasonTile" value="1" onClick={this.handleClick}>Season 1</li>
                         <li className="seasonTile" value="2" onClick={this.handleClick}>Season 2</li>
                         <li className="seasonTile" value="3" onClick={this.handleClick}>Season 3</li>
