@@ -24,6 +24,7 @@ const SongInfo = (props) => {
                     <button 
                         onClick={() => {props.getSongArtistAPI(props.song.name, props.song.artist); props.getSpotifyTrack(props.song.name, props.song.artist);
                         props.setVisible();}}
+                        className="slayButton"
                         >
                         Slay
                     </button>
