@@ -10,11 +10,7 @@ body {
     margin: 0 auto;
 }
 
-button {
-    border: 3px solid mediumvioletred;
-    display: inline-block;
-    // margin: 0 auto;
-}
+
 
 ul {
     list-style: none;
@@ -41,7 +37,7 @@ h1 {
 
 p {
     font-family: Helvetica, sans-serif;
-    color: $fontColour;
+    // color: $fontColour;
 }
 
 // .seasonTile {
@@ -90,74 +86,129 @@ p {
 
 // the song card begins here
 
-.songCard {
+.buttonContainer {
   float: left;
-  width: calc(45% - 100px);
+  width: 30%;
+  height: 100%;
+  position: relative;
+}
+
+button {
+  // border: 3px solid mediumvioletred;
+  background: #e600e6;
+  border-style: outset;
+  margin: 10px;
+  text-transform: uppercase;
+  // display: inline-block;
+  // float: left;
+  width: 100%;
+  font-size: 30px;
+  // background: #191919;
+  color: #191919;
+  border-radius: 20px;
+  position: relative;
+  top: 70%;
+  left: 50%;
+  // bottom: 50%;
+  // margin: 0 auto;
+}
+
+@media (max-width: 550px) {
+  .buttonContainer {
+    float: none;
+  }
+}
+
+.songCard {
+  // float: left;
+  // width: calc(45% - 100px);
   margin: 10px 40px;
-  border: solid 10px rgb(240, 146, 206);
+  // border: solid 3px #e600e6;  
+  border-radius: 5px;
   text-align:center;
-  background:white;
-  min-height: 240px;
-  padding-top: 20px;
+  background:#212121;
+  position: relative;
+  // filter: drop-shadow(0 0 3px grey);
+  // height: 45px;
+  // padding-top: 20px;
+}
+
+.songCard ul {
+  // border: 3px solid grey;
 }
 
 .songCardWrapper {
   width: 95%;
   margin: 0 auto;
+  margin-top: 20px;
+  overflow: auto;
+  height: 500px;
 }
+
+
+#songCardWrapperID
+
+
+
 
 .songlist {
     text-align: center;
     margin: 0 auto;
     margin: 10px;
     padding: 0;
+    float: left;
+    width: 50%;
+    // border: 2px solid #e600e6;
 }
 
 .songArtist {
     font-weight: bold;
-    font-family: 'Racing Sans One', cursive;
+    // font-family: 'Racing Sans One', cursive;
+    font-family: Helvetica, sans-serif;
     font-size: 20px;
-    color: black;
+    // color: white;
     text-transform:uppercase;
 }
 
 .songName {
     font-weight: bold;
-    border:solid 8px mediumvioletred;
-    position:relative;
-    background: white;
+    font-family: 'Racing Sans One', cursive;
+    
+    border:solid 8px #e600e6;
+    // position:relative;
+    // background: #212121;
     letter-spacing:1px;
     font-weight:500;
     font-size: 25px;
     line-height:1.8;
-    color: black;
+    color: white;
     text-align: center;
 }
 
-.songName:before {
-  content: "";
-  width: 0;
-  height: 0;
-  border-top: .9em solid transparent;
-  border-left: .9em solid mediumvioletred;
-  border-bottom: .9em solid transparent;
-  position:absolute;
-  left:0;
-  top:0;
+// .songName:before {
+//   content: "";
+//   width: 0;
+//   height: 0;
+//   border-top: .9em solid transparent;
+//   border-left: .9em solid mediumvioletred;
+//   border-bottom: .9em solid transparent;
+//   position:absolute;
+//   left:0;
+//   top:0;
 
-}
+// }
 
-.songName:after {
-  content: "";
-  width: 0;
-    height: 0;
-    border-top: .9em solid transparent;
-    border-right: .9em solid mediumvioletred;
-    border-bottom: .9em solid transparent;
-  position:absolute;
-  right:0;
-  top:0;
-}
+// .songName:after {
+//   content: "";
+//   width: 0;
+//     height: 0;
+//     border-top: .9em solid transparent;
+//     border-right: .9em solid mediumvioletred;
+//     border-bottom: .9em solid transparent;
+//   position:absolute;
+//   right:0;
+//   top:0;
+// }
 
 .songNameWrapper {
   width: 90%;
