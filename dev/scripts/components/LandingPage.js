@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import SongInfo from './SongInfo';
 import SpotifyPopUp from './SpotifyPopUp'
+import { Scrollbars } from 'react-custom-scrollbars';
 import tokens from '../tokens';
 import qs from 'qs';
 
@@ -22,6 +23,7 @@ class LandingPage extends React.Component {
         this.getSongArtistAPI = this.getSongArtistAPI.bind(this);
         this.getSpotifyTrack = this.getSpotifyTrack.bind(this);
         this.setVisible = this.setVisible.bind(this);
+        this.removePopUp = this.removePopUp.bind(this);
     }
     componentDidMount() {
         const url = new URL(location.href);
@@ -109,26 +111,45 @@ class LandingPage extends React.Component {
             visible: !prev.visible
         }));
     }
+
+    removePopUp() {
+        this.setState(prev => ({
+            visible: !prev.visible
+        }));
+    }
     
     render() {
         return (
             <div className="wrapper clearfix">
                 <a href="https://drag-race.herokuapp.com/auth">Login in with spotify</a>
-                <h1 className="flicker-1">RuPaul's Lip Sync <br/> </h1>
-                {/* <span className="headerSpan">For Your Life</span> */}
+                <div>
+                    <h1 className="mainHeader" >Lip Sync</h1>
+                </div>
+                <div>
+                    <h2 className="flicker-1 secondaryHeader">For You Life</h2>
+                    <h3 className="catchPhrase">Good Luck and Don't Fuck It Up</h3>
+                </div>
                     <ul className="clearfix">
-                        {/* <li className="seasonTile" value="0">Seasons:</li> */}
-                        <li className="seasonTile" value="1" onClick={this.handleClick}>Season 1</li>
-                        <li className="seasonTile" value="2" onClick={this.handleClick}>Season 2</li>
-                        <li className="seasonTile" value="3" onClick={this.handleClick}>Season 3</li>
-                        <li className="seasonTile" value="4" onClick={this.handleClick}>Season 4</li>
-                        <li className="seasonTile" value="5" onClick={this.handleClick}>Season 5</li>
-                        <li className="seasonTile" value="6" onClick={this.handleClick}>Season 6</li>
-                        <li className="seasonTile" value="7" onClick={this.handleClick}>Season 7</li>
-                        <li className="seasonTile" value="8" onClick={this.handleClick}>Season 8</li>
-                        <li className="seasonTile" value="9" onClick={this.handleClick}>Season 9</li>
+                        <div className="tileContainer clearfix">
+                            <div className="tileGroup clearfix">
+                                <li className="seasonTile" value="1" onClick={this.handleClick}>Season 1</li>
+                                <li className="seasonTile" value="2" onClick={this.handleClick}>Season 2</li>
+                                <li className="seasonTile" value="3" onClick={this.handleClick}>Season 3</li>
+                            </div>
+                            <div className="tileGroup clearfix">
+                                <li className="seasonTile" value="4" onClick={this.handleClick}>Season 4</li>
+                                <li className="seasonTile" value="5" onClick={this.handleClick}>Season 5</li>
+                                <li className="seasonTile" value="6" onClick={this.handleClick}>Season 6</li>
+                            </div>
+                            <div className="tileGroup clearfix">
+                                <li className="seasonTile" value="7" onClick={this.handleClick}>Season 7</li>
+                                <li className="seasonTile" value="8" onClick={this.handleClick}>Season 8</li>
+                                <li className="seasonTile" value="9" onClick={this.handleClick}>Season 9</li>
+                            </div>
+                        </div>
                     </ul>
-                <div className="songCardWrapper">
+                <div className="songCardWrapper" id="songCardWrapperID">
+                <Scrollbars renderThumbVertical={props => <div {...props} className="thumb-vertical"/>}>
                     {this.state.songsFilteredBySeason.map((song, i) => {
                         return (
                             <SongInfo 
@@ -141,15 +162,20 @@ class LandingPage extends React.Component {
                             />
                         )
                     })}
+                </Scrollbars>
                 </div>
-                <div className="spotifyPopUpWrapper">
-                    <SpotifyPopUp
-                        visible={this.state.visible}
-                        lyrics={this.state.lyrics}
-                        songTrackPlayer={this.state.songTrackPlayer}
-                        songImage={this.state.songImage}
-                    />
-                </div>
+                {/* <Scrollbars renderThumbVertical={props => <div {...props} className="thumb-vertical" />}> */}
+                    <div className="spotifyPopUpWrapper">
+                        <SpotifyPopUp
+                            visible={this.state.visible}
+                            lyrics={this.state.lyrics}
+                            songTrackPlayer={this.state.songTrackPlayer}
+                            songImage={this.state.songImage}
+                            removePopUp={this.removePopUp}
+                        />
+                    </div>
+                {/* </Scrollbars> */}
+
                 {/* <div>
                     <p>{this.state.lyrics}</p>
                     <iframe src={this.state.songTrackPlayer}
