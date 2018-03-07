@@ -33,9 +33,15 @@ h1 {
   position: relative;
   margin: 10px 0;
   letter-spacing: 3px;
-    .mainHeader {
-      // height: 30vh;
-  }}
+  &::after {
+    content: "For Your Life";
+    font-family: Helvetica, sans-serif;
+    color: fuchsia;
+    font-size: 16px;
+    letter-spacing: 
+    
+  }
+}
 
 
 .spotifyLogin {
@@ -116,6 +122,32 @@ margin: 0;
   // margin-bottom: 80px;
 }
 
+@media screen and (max-width: 700px) {
+  h1 {
+    font-size: 100px;
+  }
+}
+@media screen and (max-width: 700px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  svg {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  svg {
+    width: 80px;
+    height: 80px;
+  }
+}
+
 
 p {
   font-family: Helvetica, sans-serif;
@@ -166,6 +198,33 @@ input[type=radio]:checked + label {
   font-weight: normal;
   padding: 1% 3%;
 }
+
+.seasonDownButton {
+  text-decoration: none;
+  font-size: 22px;
+  border-radius: 10px;
+  border: 1px solid #e600e6;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  background: #212121;
+  color: white;
+  border-style: groove;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 28px;
+  text-align: center;
+  padding: 3% 1.5%;
+  margin: 20px;
+  display: inline-block;
+  filter: drop-shadow(0 0 7px #e600e6);
+  display: inline-block;
+  text-align: center;
+  padding: 20px;
+}
+
+
 
 // the song card begins here
 
