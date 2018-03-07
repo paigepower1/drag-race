@@ -4,11 +4,29 @@ QUESTIONS
 
 
 - seasonTiles need focus
-- spacing needs some lovin
+    -LW
 - scrollbar on pop up needs fixing
+    -LW
+    -update: too many layers interacting on pop up, removed visible scroll bar from other section so it would still match 
 - scrollbar border visibility needs fixing
-- if/else for undefined lyrics
+    -LW
 - login needs some attention
-    - moved to right
+    -PP
+- if/else for undefined lyrics
+    -CM
+- some sort of indicating copy on login button
+    -PP
+-favicon
+    -CM
+- add header above songcards 
+
+-button on pop up needs styles
+-styling popup generally
+
+
+     - hide everything if not logged in?
+- spacing needs some lovin
 - colours everywhere 
 - smoothscroll on season click
+- season page and songcards should be 100vh/w 
+- add icon from original design
